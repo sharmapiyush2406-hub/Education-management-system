@@ -36,11 +36,13 @@ function Toast({ msg, onDone }) {
   return <div className="toast">✅ {msg}</div>;
 }
 
+
 // ── Auth helpers ─────────────────────────────────────────────────────
 function saveAuth(data) {
   localStorage.setItem("ems_token", data.token);
   localStorage.setItem("ems_user", JSON.stringify({ name: data.name, role: data.role, email: data.email }));
 }
+
 
 function loadAuth() {
   const token = localStorage.getItem("ems_token");
@@ -79,6 +81,7 @@ function LoginPage({ onLogin }) {
   const [password, setPassword] = useState("");
   const [error, setError]       = useState("");
   const [loading, setLoading]   = useState(false);
+  
 
   const handleLogin = async (e) => {
     e.preventDefault();

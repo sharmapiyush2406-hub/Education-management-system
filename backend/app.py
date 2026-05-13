@@ -27,7 +27,7 @@ SUBJECTS = ["PYTHON", "DBMS", "DMS", "SALESFORCE", "GCCF"]
 def token_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
-        token = request.headers.get("Authorization", "").replace("Bearer ", "")
+        token = request.headers.get("Authorization", "").replace("Bearer ", "")   
         if not token:
             return jsonify({"error": "Token missing"}), 401
         try:
@@ -97,7 +97,6 @@ def my_record(payload):
         return jsonify({"error": "User not found"}), 404
     return jsonify({
         "name": user["name"],
-        "email": user["email"],
         "grades": user.get("grades", {}),
         "attendance": user.get("attendance", {})
     })
